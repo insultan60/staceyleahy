@@ -118,7 +118,7 @@ export default function BuyPage() {
               </Reveal>
             </div>
             <Reveal as="p" delay={150} className="max-w-md text-ink-soft">
-              Tap the heart to save a home to your account. For photos, disclosures or a private tour, ask Stacey.
+              For photos, disclosures or a private tour, ask Stacey.
             </Reveal>
           </div>
           <div className="mt-12">

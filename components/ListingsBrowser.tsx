@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import SaveHomeButton from "./SaveHomeButton";
 import type { Listing } from "@/content/site";
 
 const SORTS = {
@@ -97,7 +96,6 @@ export default function ListingsBrowser({ listings }: { listings: Listing[] }) {
               >
                 {l.status}
               </span>
-              <SaveHomeButton id={l.address} label={l.name} className="text-forest-900" />
             </div>
             <div className="mt-10">
               <p className="font-display text-4xl text-forest-900">{l.price}</p>

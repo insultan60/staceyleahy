@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import SaveHomeButton from "@/components/SaveHomeButton";
 import CountUp from "@/components/ui/CountUp";
 import ScoreRing from "@/components/ui/ScoreRing";
 import { getNeighborhood, neighborhoods } from "@/content/site";
@@ -167,7 +166,6 @@ export default async function NeighborhoodPage({ params }: PageProps<"/neighborh
                       <p className="font-display text-4xl text-forest-900">{l.price}</p>
                       <p className="mt-2 text-ink-soft">{l.address}</p>
                     </div>
-                    <SaveHomeButton id={l.address} label={l.name || l.address} className="text-forest-900" />
                   </div>
                   <p className="text-sm tracking-[0.14em] text-forest-900 uppercase">
                     {[l.beds && `${l.beds} bd`, l.baths && `${l.baths} ba`, l.sqft && `${Number(l.sqft).toLocaleString("en-US")} sq ft`]

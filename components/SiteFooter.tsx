@@ -72,11 +72,6 @@ export default function SiteFooter() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm">
-              <Link href="/login" className="hover:text-gold-300">
-                Client sign in
-              </Link>
-            </p>
           </div>
         </div>
 

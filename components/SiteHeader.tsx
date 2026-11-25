@@ -5,11 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { nav } from "@/content/site";
-import { initials, useAccount } from "@/lib/demo-account";
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const account = useAccount();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openedAt, setOpenedAt] = useState(pathname);
@@ -36,8 +34,7 @@ export default function SiteHeader() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   // Sign-in pages open on a light panel, so the header can't start transparent there
-  const solid = scrolled || menuOpen || ["/login", "/signup", "/forgot-password"].includes(pathname);
-  const accountHref = account ? "/account" : "/login";
+  const solid = scrolled || menuOpen;
 
   return (
     <header
@@ -66,22 +63,6 @@ export default function SiteHeader() {
             </Link>
           ))}
           <Link
-            href={accountHref}
-            aria-label={account ? `Your account, ${account.name}` : "Sign in"}
-            className="flex items-center gap-2 text-[0.95rem] font-medium text-ivory/80 transition-colors hover:text-gold-300"
-          >
-            {account ? (
-              <span className="flex size-9 items-center justify-center rounded-full bg-gold-400 text-xs font-semibold text-forest-950">
-                {initials(account.name)}
-              </span>
-            ) : (
-              <>
-                <UserIcon />
-                Sign in
-              </>
-            )}
-          </Link>
-          <Link
             href="/contact"
             className="shimmer border border-gold-500 px-7 py-3 text-[0.95rem] font-medium text-ivory transition-colors duration-300 hover:bg-gold-500 hover:text-forest-950"
           >
@@ -90,15 +71,6 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3 xl:hidden">
-          <Link href={accountHref} aria-label={account ? "Your account" : "Sign in"} className="flex size-11 items-center justify-center text-ivory">
-            {account ? (
-              <span className="flex size-9 items-center justify-center rounded-full bg-gold-400 text-xs font-semibold text-forest-950">
-                {initials(account.name)}
-              </span>
-            ) : (
-              <UserIcon />
-            )}
-          </Link>
           <button
             type="button"
             className="flex size-11 flex-col items-center justify-center gap-1.5 border border-gold-500/70"
@@ -136,20 +108,9 @@ export default function SiteHeader() {
           <Link href="/contact" className="btn-gold px-8 py-4 text-sm font-semibold tracking-[0.16em] uppercase">
             Let&apos;s Talk
           </Link>
-          <Link href={accountHref} className="border border-gold-500 px-8 py-4 text-sm font-semibold tracking-[0.16em] text-ivory uppercase">
-            {account ? "Your account" : "Sign in"}
-          </Link>
         </div>
       </nav>
     </header>
   );
 }
 
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      <circle cx="12" cy="8.5" r="3.5" />
-      <path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5" />
-    </svg>
-  );
-}
