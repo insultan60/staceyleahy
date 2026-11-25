@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Figtree } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollToTop from "@/components/ScrollToTop";
+import LeadPopup from "@/components/LeadPopup";
 import { VideoProvider } from "@/components/VideoPlayer";
 import "./globals.css";
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
+          <LeadPopup />
         </VideoProvider>
       </body>
     </html>
