@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Figtree } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import ScrollToTop from "@/components/ScrollToTop";
 import { VideoProvider } from "@/components/VideoPlayer";
 import "./globals.css";
 
@@ -39,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className={`${display.variable} ${sans.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Enable scroll reveals before first paint, unless the visitor prefers reduced motion */}
         <script
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <VideoProvider>
+          <ScrollToTop />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
